@@ -1,0 +1,19 @@
+--- 
+image: "maven:3.3.9-jdk-8"
+maven-build: 
+  script: "mvn package"
+  stage: build
+maven-test: 
+  script: "mvn test"
+  stage: test
+services: 
+  - "mysql:5.7"
+stages: 
+  - test
+  - build
+variables: 
+  MYSQL_DATABASE: keepnote
+  MYSQL_HOST: mysql
+  MYSQL_PASSWORD: root
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_USER: app-root
